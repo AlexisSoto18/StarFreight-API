@@ -7,4 +7,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  namespace :api do
+    namespace :v1 do
+      resources :spaceships do
+        resources :spaceship_routes, only: [ :index, :show, :create, :update, :destroy ]
+      end
+      resources :cargos, only: [ :index, :show, :create, :update, :destroy ]
+      resources :routes, only: [ :index, :show, :create, :update, :destroy ]
+    end
+  end
 end
